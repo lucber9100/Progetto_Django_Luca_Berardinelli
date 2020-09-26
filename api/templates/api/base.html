@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Progetto Django di Luca Berardinelli</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="content container">
+            <h1>Progetto Django di Luca Berardinelli</h1>
+            {% if user.is_authenticated %}
+                <p><a href="{% url 'logout' %}">Log Out</a></p>
+            {% else %}
+                <h3><a href="{% url 'login' %}" class="top-menu">Login</span></a></h3><br>
+            {% endif%}
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="page-header">
+                {% if user.is_superuser %}
+                    <a href="{% url 'admin_panel' %}" class="top-menu">(ex.3) N° of posts published (admin)</span></a><br>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'new_post' %}" class="top-menu">(ex.2) New post</span></a><br>
+                    <a href="{% url 'user_detail' pk=user.id %}">(ex.4) User logged '{{ user }}'</a><br>
+                    <a href="{% url 'posts1h' %}">(ex.5) Posts less 1h ago - endpoint 'posts1h'</a><br>
+                    <a href="{% url 'get_occurrences' string='hello' %}" class="top-menu">(ex.6) Search string (default 'hello')</span></a><br>
+                {% endif %}
+             </div>
+        </div>
+    </body>
+</html>

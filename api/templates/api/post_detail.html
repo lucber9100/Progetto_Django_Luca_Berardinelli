@@ -1,0 +1,20 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+     <div class="post">
+     <h2>Post details</h2>
+          <p><b>Post Id: </b>{{ post.id }}</p>
+          <p><b>Content: </b>{{ post.content }}</p>
+          <p><b>Created by: </b>{{ post.user }}</p>
+          <p><b>Date & time: </b>{{ post.datetime }}</p>
+     </div>
+
+    <br><h2>Post list</h2><br>
+    {% for post in posts %}
+        <div class="post">
+            <p><b>Content: </b><a href="{% url 'post_detail' pk=post.pk %}">{{ post.content }}</a></p>
+            <p class="date"><b>Date & time: </b>{{ post.datetime }}</p>
+            <p class="date"><b>Author: </b>{{ post.user }}</p><br>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+     <h2>New post</h2>
+     <form method="POST" class="post-form">{% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="save btn btn-default">Save</button>
+     </form>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <br><h2>Post list</h2><br>
+    {% for post in posts %}
+        <div class="post">
+            <p><b>Content: </b><a href="{% url 'post_detail' pk=post.pk %}">{{ post.content }}</a></p>
+            <p><b>Date & time: </b>{{ post.datetime }}</p>
+            <p><b>Author: </b>{{ post.user }}</p><br>
+        </div>
+    {% endfor %}
+{% endblock %}

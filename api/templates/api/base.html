@@ -11,8 +11,8 @@
             {% if user.is_authenticated %}
                 <p><a href="{% url 'logout' %}">Log Out</a></p>
             {% else %}
-                <h3><a href="{% url 'login' %}" class="top-menu">Login</span></a></h3><br>
-            {% endif%}
+                <h3><a href="{% url 'login' %}" class="top-menu">Login (Ex.8, check and trace your IP)</span></a></h3><br>
+            {% endif %}
             <div class="row">
                 <div class="col-md-8">
                     {% block content %}
@@ -24,7 +24,7 @@
                     <a href="{% url 'admin_panel' %}" class="top-menu">(ex.3) N° of posts published (admin)</span></a><br>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <a href="{% url 'new_post' %}" class="top-menu">(ex.2) New post</span></a><br>
+                    <a href="{% url 'new_post' %}" class="top-menu">(ex.2 + ex.7) New post</span></a><br>
                     <a href="{% url 'user_detail' pk=user.id %}">(ex.4) User logged '{{ user }}'</a><br>
                     <a href="{% url 'posts1h' %}">(ex.5) Posts less 1h ago - endpoint 'posts1h'</a><br>
                     <a href="{% url 'get_occurrences' string='hello' %}" class="top-menu">(ex.6) Search string (default 'hello')</span></a><br>

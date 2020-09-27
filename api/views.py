@@ -8,7 +8,7 @@ from .forms import SignUpForm
 from datetime import datetime
 from django.contrib import messages
 
-# -------- Ex.1 + Ex.7
+# -------- Ex.1
 def home(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -31,7 +31,7 @@ def home(request):
         form = SignUpForm()
     return render(request, 'api/home.html', {'form': form, 'user': request.user})
 
-# -------- Ex.2
+# -------- Ex.2 + Ex.7
 def new_post(request):
      posts_list = Post.objects.all()
      if request.method == "POST":
